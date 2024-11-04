@@ -30,12 +30,7 @@
         "tags": [
           "recipes"
         ],
-        "operationId": "listRecipes",
-        "responses": {
-          "200": {
-            "description": "Successful operation"
-          }
-        }
+        "operationId": "listRecipes"
       },
       "post": {
         "description": "Create new recipe",
@@ -46,14 +41,48 @@
           "recipes"
         ],
         "operationId": "createRecipe",
-        "responses": {
-          "200": {
-            "description": "Recipe created"
+        "parameters": [
+          {
+            "type": "string",
+            "x-go-name": "Name",
+            "name": "name",
+            "in": "query"
           },
-          "400": {
-            "description": "Invalid input"
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "x-go-name": "Tags",
+            "name": "tags",
+            "in": "query"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "x-go-name": "Ingredients",
+            "name": "ingredients",
+            "in": "query"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "x-go-name": "Instructions",
+            "name": "instructions",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "format": "date-time",
+            "x-go-name": "PublishedAt",
+            "name": "publishedAt",
+            "in": "query"
           }
-        }
+        ]
       }
     },
     "/recipes/search": {
@@ -74,12 +103,7 @@
             "in": "query",
             "required": true
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "recipes found"
-          }
-        }
+        ]
       }
     },
     "/recipes/{id}": {
@@ -100,18 +124,7 @@
             "in": "path",
             "required": true
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful operation"
-          },
-          "400": {
-            "description": "Invalid input"
-          },
-          "404": {
-            "description": "Invalid recipe ID"
-          }
-        }
+        ]
       },
       "delete": {
         "description": "Delete recipe by ID",
@@ -130,15 +143,7 @@
             "in": "path",
             "required": true
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "recipe has been deleted"
-          },
-          "404": {
-            "description": "recipe not found"
-          }
-        }
+        ]
       }
     }
   }

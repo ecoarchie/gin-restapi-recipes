@@ -107,6 +107,25 @@
       }
     },
     "/recipes/{id}": {
+      "get": {
+        "description": "Get recipe by ID",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "recipes"
+        ],
+        "operationId": "getRecipe",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "ID of the recipe",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ]
+      },
       "put": {
         "description": "Update an existing recipe",
         "produces": [
